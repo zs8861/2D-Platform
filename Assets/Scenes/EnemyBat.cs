@@ -13,6 +13,7 @@ public class EnemyBat : Enemy
     // Update is called once per frame
     public void Update()
     {
+        //调用父类的Update()方法
         base.Update();
     }
 }
