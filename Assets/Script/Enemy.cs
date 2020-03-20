@@ -7,10 +7,16 @@ public abstract class Enemy : MonoBehaviour
     public int health;
     public int damage;
 
+    public float flashTime;
+
+    private SpriteRenderer sr;
+    private Color originalColor;
+
     // Start is called before the first frame update
     public void Start()
     {
-
+        sr = GetComponent<SpriteRenderer>();
+        originalColor = sr.color;
     }
 
     // Update is called once per frame
@@ -25,5 +31,17 @@ public abstract class Enemy : MonoBehaviour
     public void TakeDamage(int damage)
     {
         health -= damage;
+        FlashColor(flashTime);
+    }
+
+    void FlashColor(float time)
+    {
+        sr.color = Color.red;
+        Invoke("ResetColor", time);
+    }
+
+    void ResetColor()
+    {
+        sr.color = originalColor;
     }
 }

@@ -237,6 +237,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 5
   damage: 1
+  flashTime: 0.2
 --- !u!61 &104780362
 BoxCollider2D:
   m_ObjectHideFlags: 0
