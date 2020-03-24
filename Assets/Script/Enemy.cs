@@ -6,8 +6,8 @@ public abstract class Enemy : MonoBehaviour
 {
     public int health;
     public int damage;
-
     public float flashTime;
+    public GameObject bloodEffect;
 
     private SpriteRenderer sr;
     private Color originalColor;
@@ -32,6 +32,8 @@ public abstract class Enemy : MonoBehaviour
     {
         health -= damage;
         FlashColor(flashTime);
+        Instantiate(bloodEffect, transform.position, Quaternion.identity);
+        GameController.camShake.Shake();
     }
 
     void FlashColor(float time)
