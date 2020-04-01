@@ -4,5 +4,6 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
+    public static bool isGameAlive = true;
     public static CameraShake camShake;
 }
