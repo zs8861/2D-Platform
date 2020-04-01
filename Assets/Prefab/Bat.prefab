@@ -107,7 +107,7 @@ GameObject:
   - component: {fileID: 1735380980731500130}
   - component: {fileID: 1735380980731500142}
   - component: {fileID: 1735380980731500141}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: EnemyBat
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -163,8 +163,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -306681333
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 8647823593821616703, guid: 84768d1d638c835418aaca19011f06ef,
     type: 3}
@@ -236,7 +236,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 5
-  damage: 1
+  damage: 2
   flashTime: 0.2
   bloodEffect: {fileID: 2371392107485273096, guid: 1f05f3339438a754b970ecb17e8f690e,
     type: 3}
