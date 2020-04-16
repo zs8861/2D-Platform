@@ -8,11 +8,13 @@ public class PlayerHealth : MonoBehaviour
     public int blinks;
     public float time;
     public float dieTime;
+    public float hitBoxCdTime;
 
     private Renderer myRender;
     private Animator anim;
     private ScreenFlash sf;
     private Rigidbody2D rb2d;
+    private PolygonCollider2D polygonCollider2D;
 
     // Start is called before the first frame update
     void Start()
@@ -23,6 +25,7 @@ public class PlayerHealth : MonoBehaviour
         anim = GetComponent<Animator>();
         sf = GetComponent<ScreenFlash>();
         rb2d = GetComponent<Rigidbody2D>();
+        polygonCollider2D = GetComponent<PolygonCollider2D>();
     }
 
     // Update is called once per frame
@@ -49,6 +52,14 @@ public class PlayerHealth : MonoBehaviour
             Invoke("KillPlayer", dieTime);
         }
         BlinkPlayer(blinks, time);
+        polygonCollider2D.enabled = false;
+        StartCoroutine(ShowPlayerHitBox());
+    }
+
+    IEnumerator ShowPlayerHitBox()
+    {
+        yield return new WaitForSeconds(hitBoxCdTime);
+        polygonCollider2D.enabled = true;
     }
 
     void KillPlayer()
