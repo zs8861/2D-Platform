@@ -7,12 +7,25 @@ public class PlayerController : MonoBehaviour
     public float runSpeed;
     public float jumpSpeed;
     public float doulbJumpSpeed;
+    public float climbSpeed;
+    public float restoreTime;
 
     private Rigidbody2D myRigidbody;
     private Animator myAnim;
     private BoxCollider2D myFeet;
     private bool isGround;
     private bool canDoubleJump;
+    private bool isOneWayPlatform;
+
+    private bool isLadder;
+    private bool isClimbing;
+
+    private bool isJumping;
+    private bool isFalling;
+    private bool isDoubleJumping;
+    private bool isDoubleFalling;
+
+    private float playerGravity;
 
     // Start is called before the first frame update
     void Start()
@@ -20,6 +33,7 @@ public class PlayerController : MonoBehaviour
         myRigidbody = GetComponent<Rigidbody2D>();
         myAnim = GetComponent<Animator>();
         myFeet = GetComponent<BoxCollider2D>();
+        playerGravity = myRigidbody.gravityScale;
     }
 
     // Update is called once per frame
@@ -27,19 +41,31 @@ public class PlayerController : MonoBehaviour
     {
         if(GameController.isGameAlive)
         {
+            CheckAirStatus();
             Flip();
             Run();
             Jump();
+            Climb();
             //Attack();
             CheckGrounded();
+            CheckLadder();
             SwitchAnimation();
+            OneWayPlatformCheck();
         }
     }
 
     void CheckGrounded()
     {
         isGround = myFeet.IsTouchingLayers(LayerMask.GetMask("Ground")) ||
-                   myFeet.IsTouchingLayers(LayerMask.GetMask("MovingPlatform"));
+                   myFeet.IsTouchingLayers(LayerMask.GetMask("MovingPlatform")) ||
+                   myFeet.IsTouchingLayers(LayerMask.GetMask("OneWayPlatform"));
+        isOneWayPlatform = myFeet.IsTouchingLayers(LayerMask.GetMask("OneWayPlatform"));
+    }
+
+    void CheckLadder()
+    {
+        isLadder = myFeet.IsTouchingLayers(LayerMask.GetMask("Ladder"));
+        Debug.Log("isLadder:" + isLadder);
     }
 
     void Flip()
@@ -93,6 +119,54 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    void Climb()
+    {
+        float moveY = Input.GetAxis("Vertical");
+
+        if(isClimbing)
+        {
+            myRigidbody.velocity = new Vector2(myRigidbody.velocity.x, moveY * climbSpeed);
+            canDoubleJump = false;
+        }
+
+        if (isLadder)        
+        {            
+            if (moveY > 0.5f || moveY < -0.5f)
+            {
+                myAnim.SetBool("Jump", false);
+                myAnim.SetBool("DoubleJump", false);
+                myAnim.SetBool("Climbing", true);
+                myRigidbody.velocity = new Vector2(myRigidbody.velocity.x, moveY * climbSpeed);
+                myRigidbody.gravityScale = 0.0f;
+            }
+            else
+            {
+                if (isJumping || isFalling || isDoubleJumping || isDoubleFalling)
+                {
+                    myAnim.SetBool("Climbing", false);
+                }
+                else
+                {
+                    myAnim.SetBool("Climbing", false);
+                    myRigidbody.velocity = new Vector2(myRigidbody.velocity.x, 0.0f);
+                    
+                }
+            }
+        }
+        else
+        {
+            myAnim.SetBool("Climbing", false);
+            myRigidbody.gravityScale = playerGravity;
+        }
+
+        if (isLadder && isGround)
+        {
+            myRigidbody.gravityScale = playerGravity;
+        }
+
+        Debug.Log("myRigidbody.gravityScale:"+ myRigidbody.gravityScale);
+    }
+
     //void Attack()
     //{
     //    if(Input.GetButtonDown("Attack"))
@@ -131,5 +205,42 @@ public class PlayerController : MonoBehaviour
             myAnim.SetBool("DoubleFall", false);
             myAnim.SetBool("Idle", true);
         }
+    }
+
+    void OneWayPlatformCheck()
+    {
+        if(isGround && gameObject.layer != LayerMask.NameToLayer("Player"))
+        {
+            gameObject.layer = LayerMask.NameToLayer("Player");
+        }        
+
+        float moveY = Input.GetAxis("Vertical");
+        if (isOneWayPlatform && moveY < -0.1f)
+        {
+            gameObject.layer = LayerMask.NameToLayer("OneWayPlatform");
+            Invoke("RestorePlayerLayer", restoreTime);
+        }
+    }
+
+    void RestorePlayerLayer()
+    {
+        if(!isGround && gameObject.layer != LayerMask.NameToLayer("Player"))
+        {
+            gameObject.layer = LayerMask.NameToLayer("Player");
+        }
+    }
+
+    void CheckAirStatus()
+    {
+        isJumping = myAnim.GetBool("Jump");
+        isFalling = myAnim.GetBool("Fall");
+        isDoubleJumping = myAnim.GetBool("DoubleJump");
+        isDoubleFalling = myAnim.GetBool("DoubleFall");
+        isClimbing = myAnim.GetBool("Climbing");
+        Debug.Log("isJumping:" + isJumping);
+        Debug.Log("isFalling:" + isFalling);
+        Debug.Log("isDoubleJumping:" + isDoubleJumping);
+        Debug.Log("isDoubleFalling:" + isDoubleFalling);
+        Debug.Log("isClimbing:" + isClimbing);
     }
 }

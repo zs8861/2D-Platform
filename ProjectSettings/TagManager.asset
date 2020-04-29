@@ -19,9 +19,9 @@ TagManager:
   - Player
   - Enemy
   - Spike
-  - 
-  - 
-  - 
+  - MovingPlatform
+  - OneWayPlatform
+  - Ladder
   - 
   - 
   - 
@@ -48,6 +48,9 @@ TagManager:
     locked: 0
   - name: Ground
     uniqueID: 1311764807
+    locked: 0
+  - name: Ladder
+    uniqueID: 1484500403
     locked: 0
   - name: Enemy
     uniqueID: 3988285963

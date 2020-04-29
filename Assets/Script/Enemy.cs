@@ -42,6 +42,8 @@ public abstract class Enemy : MonoBehaviour
     {
         sr.color = Color.red;
         Invoke("ResetColor", time);
+        Debug.Log("dkfjdk");
+        Debug.Log("zhengshuo");
     }
 
     void ResetColor()
