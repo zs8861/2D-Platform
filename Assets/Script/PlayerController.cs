@@ -65,7 +65,7 @@ public class PlayerController : MonoBehaviour
     void CheckLadder()
     {
         isLadder = myFeet.IsTouchingLayers(LayerMask.GetMask("Ladder"));
-        Debug.Log("isLadder:" + isLadder);
+        //Debug.Log("isLadder:" + isLadder);
     }
 
     void Flip()
@@ -164,7 +164,7 @@ public class PlayerController : MonoBehaviour
             myRigidbody.gravityScale = playerGravity;
         }
 
-        Debug.Log("myRigidbody.gravityScale:"+ myRigidbody.gravityScale);
+        //Debug.Log("myRigidbody.gravityScale:"+ myRigidbody.gravityScale);
     }
 
     //void Attack()
@@ -237,10 +237,10 @@ public class PlayerController : MonoBehaviour
         isDoubleJumping = myAnim.GetBool("DoubleJump");
         isDoubleFalling = myAnim.GetBool("DoubleFall");
         isClimbing = myAnim.GetBool("Climbing");
-        Debug.Log("isJumping:" + isJumping);
-        Debug.Log("isFalling:" + isFalling);
-        Debug.Log("isDoubleJumping:" + isDoubleJumping);
-        Debug.Log("isDoubleFalling:" + isDoubleFalling);
-        Debug.Log("isClimbing:" + isClimbing);
+        //Debug.Log("isJumping:" + isJumping);
+        //Debug.Log("isFalling:" + isFalling);
+        //Debug.Log("isDoubleJumping:" + isDoubleJumping);
+        //Debug.Log("isDoubleFalling:" + isDoubleFalling);
+        //Debug.Log("isClimbing:" + isClimbing);
     }
 }
