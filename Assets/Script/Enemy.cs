@@ -8,6 +8,7 @@ public abstract class Enemy : MonoBehaviour
     public int damage;
     public float flashTime;
     public GameObject bloodEffect;
+    public GameObject dropCoin;
 
     private SpriteRenderer sr;
     private Color originalColor;
@@ -26,6 +27,7 @@ public abstract class Enemy : MonoBehaviour
     {
         if (health <= 0)
         {
+            Instantiate(dropCoin, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
     }
