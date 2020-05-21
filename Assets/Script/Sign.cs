@@ -21,8 +21,15 @@ public class Sign : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.E) && isPlayerInSign)
         {
-            dialogBoxText.text = signText;
-            dialogBox.SetActive(true);
+            if(dialogBox.activeInHierarchy)
+            {
+                dialogBox.SetActive(false);
+            }
+            else
+            {
+                dialogBoxText.text = signText;
+                dialogBox.SetActive(true);
+            }
         }
     }
 
