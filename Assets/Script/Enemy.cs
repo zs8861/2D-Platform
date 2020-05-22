@@ -9,6 +9,7 @@ public abstract class Enemy : MonoBehaviour
     public float flashTime;
     public GameObject bloodEffect;
     public GameObject dropCoin;
+    public GameObject floatPoint;
 
     private SpriteRenderer sr;
     private Color originalColor;
@@ -34,6 +35,8 @@ public abstract class Enemy : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        GameObject gb = Instantiate(floatPoint, transform.position, Quaternion.identity) as GameObject;
+        gb.transform.GetChild(0).GetComponent<TextMesh>().text = damage.ToString();
         health -= damage;
         FlashColor(flashTime);
         Instantiate(bloodEffect, transform.position, Quaternion.identity);

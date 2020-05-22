@@ -58,7 +58,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1735380979787989041}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.94, y: -3.94, z: 0}
+  m_LocalPosition: {x: 2.56, y: -4.04, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8327728558202825333}
@@ -88,7 +88,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1735380979941397868}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 6.91, y: -0.97, z: 0}
+  m_LocalPosition: {x: 3.23, y: -3.68, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8327728558202825333}
@@ -145,7 +145,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -164,7 +164,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -306681333
-  m_SortingLayer: 2
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: 8647823593821616703, guid: 84768d1d638c835418aaca19011f06ef,
     type: 3}
@@ -235,10 +235,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddfe324ba898b3946894fa28c7fe6459, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 5
+  health: 10
   damage: 2
   flashTime: 0.2
   bloodEffect: {fileID: 2371392107485273096, guid: 1f05f3339438a754b970ecb17e8f690e,
+    type: 3}
+  dropCoin: {fileID: 4623539806681552020, guid: 556cdf0b2102cfa48be8c7a703e07c3d,
+    type: 3}
+  floatPoint: {fileID: 5436972558478801286, guid: e6c93178387d2c447b1adcba84db275e,
     type: 3}
   speed: 2
   startWaitTime: 0.2
