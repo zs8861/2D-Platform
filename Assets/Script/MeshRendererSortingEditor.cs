@@ -2,6 +2,7 @@
 using UnityEditor;
 using System.Linq;
 
+#if UNITY_EDITOR
 /// This just exposes the Sorting Layer / Order in MeshRenderer since it's there
 /// but not displayed in the inspector. Getting MeshRenderer to render in front
 /// of a SpriteRenderer is pretty hard without this.
@@ -77,3 +78,5 @@ public class MeshRendererSortingEditor : Editor
 // OTHER DEALINGS IN THE SOFTWARE.
 // 
 // For more information, please refer to <http://unlicense.org/>
+
+#endif
