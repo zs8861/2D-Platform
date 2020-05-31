@@ -11,7 +11,7 @@ public abstract class Enemy : MonoBehaviour
     public GameObject dropCoin;
     public GameObject floatPoint;
 
-    private SpriteRenderer sr;
+    private SpriteRenderer sr; 
     private Color originalColor;
     private PlayerHealth playerHealth;
 
