@@ -107,6 +107,7 @@ GameObject:
   - component: {fileID: 1735380980731500130}
   - component: {fileID: 1735380980731500142}
   - component: {fileID: 1735380980731500141}
+  - component: {fileID: 5939965551300847161}
   m_Layer: 10
   m_Name: EnemyBat
   m_TagString: Enemy
@@ -249,6 +250,27 @@ MonoBehaviour:
   movePos: {fileID: 1735380981640551923}
   leftDownPos: {fileID: 1735380979787989042}
   rightUpPos: {fileID: 1735380979941397869}
+--- !u!50 &5939965551300847161
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1735380980731500129}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 0
+  m_CollisionDetection: 1
+  m_Constraints: 4
 --- !u!1 &1735380981640551922
 GameObject:
   m_ObjectHideFlags: 0
