@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
@@ -27,6 +28,28 @@ public class PlayerController : MonoBehaviour
 
     private float playerGravity;
 
+    private PlayerInputActions controls;
+    private Vector2 move;
+
+    void Awake()
+    {
+        controls = new PlayerInputActions();
+
+        controls.GamePlay.Move.performed += ctx => move = ctx.ReadValue<Vector2>();
+        controls.GamePlay.Move.canceled += ctx => move = Vector2.zero;
+        controls.GamePlay.Jump.started += ctx => Jump();
+    }
+
+    void OnEnable()
+    {
+        controls.GamePlay.Enable();
+    }
+
+    void OnDisable()
+    {
+        controls.GamePlay.Disable();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -44,7 +67,7 @@ public class PlayerController : MonoBehaviour
             CheckAirStatus();
             Flip();
             Run();
-            Jump();
+            //Jump();
             Climb();
             //Attack();
             CheckGrounded();
@@ -87,17 +110,22 @@ public class PlayerController : MonoBehaviour
 
     void Run()
     {
-        float moveDir = Input.GetAxis("Horizontal");
-        //Debug.Log("moveDir = " + moveDir.ToString());
-        Vector2 playerVel = new Vector2(moveDir * runSpeed, myRigidbody.velocity.y);
-        myRigidbody.velocity = playerVel;
-        bool plyerHasXAxisSpeed = Mathf.Abs(myRigidbody.velocity.x) > Mathf.Epsilon;
-        myAnim.SetBool("Run", plyerHasXAxisSpeed);
+        //float moveDir = Input.GetAxis("Horizontal");
+        ////Debug.Log("moveDir = " + moveDir.ToString());
+        //Vector2 playerVel = new Vector2(moveDir * runSpeed, myRigidbody.velocity.y);
+        //myRigidbody.velocity = playerVel;
+        //bool plyerHasXAxisSpeed = Mathf.Abs(myRigidbody.velocity.x) > Mathf.Epsilon;
+        //myAnim.SetBool("Run", plyerHasXAxisSpeed);
+
+        Vector2 playerVelocity = new Vector2(move.x * runSpeed, myRigidbody.velocity.y);
+        myRigidbody.velocity = playerVelocity;
+        bool playerHasXAxisSpeed = Mathf.Abs(myRigidbody.velocity.x) > Mathf.Epsilon;
+        myAnim.SetBool("Run", playerHasXAxisSpeed);
     }
 
     void Jump()
     {
-        if (Input.GetButtonDown("Jump"))
+        //if (Input.GetButtonDown("Jump"))
         {
             if(isGround)
             {

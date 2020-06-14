@@ -11,6 +11,26 @@ public class PlayerAttack : MonoBehaviour
     private Animator anim;
     private PolygonCollider2D collider2D;
 
+    private PlayerInputActions controls;
+    private Vector2 move;
+
+    void Awake()
+    {
+        controls = new PlayerInputActions();
+
+        controls.GamePlay.Attack.started += ctx => Attack();
+    }
+
+    void OnEnable()
+    {
+        controls.GamePlay.Enable();
+    }
+
+    void OnDisable()
+    {
+        controls.GamePlay.Disable();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,12 +41,12 @@ public class PlayerAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Attack();
+        //Attack();
     }
 
     void Attack()
     {
-        if(Input.GetButtonDown("Attack"))
+        //if(Input.GetButtonDown("Attack"))
         {
             anim.SetTrigger("Attack");
             StartCoroutine(StartAttack());
