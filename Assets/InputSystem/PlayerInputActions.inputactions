@@ -36,6 +36,14 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "Esc",
+                    "type": "Button",
+                    "id": "24240f57-5c2e-4577-98d8-4742806edd63",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -454,6 +462,17 @@
                     "processors": "",
                     "groups": "Keyboard",
                     "action": "EnterDoor",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8027b3a4-b36f-4dda-a765-38f19b3a2a33",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Esc",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

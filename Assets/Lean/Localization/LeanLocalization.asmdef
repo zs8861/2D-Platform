@@ -1,0 +1,8 @@
+{
+    "name": "LeanLocalization",
+    "references": [
+        "LeanCommon"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": []
+}

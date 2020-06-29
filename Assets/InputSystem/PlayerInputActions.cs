@@ -49,6 +49,14 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Esc"",
+                    ""type"": ""Button"",
+                    ""id"": ""24240f57-5c2e-4577-98d8-4742806edd63"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -469,6 +477,17 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                     ""action"": ""EnterDoor"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8027b3a4-b36f-4dda-a765-38f19b3a2a33"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Esc"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -503,6 +522,7 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
         m_GamePlay_Jump = m_GamePlay.FindAction("Jump", throwIfNotFound: true);
         m_GamePlay_Attack = m_GamePlay.FindAction("Attack", throwIfNotFound: true);
         m_GamePlay_EnterDoor = m_GamePlay.FindAction("EnterDoor", throwIfNotFound: true);
+        m_GamePlay_Esc = m_GamePlay.FindAction("Esc", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -556,6 +576,7 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
     private readonly InputAction m_GamePlay_Jump;
     private readonly InputAction m_GamePlay_Attack;
     private readonly InputAction m_GamePlay_EnterDoor;
+    private readonly InputAction m_GamePlay_Esc;
     public struct GamePlayActions
     {
         private @PlayerInputActions m_Wrapper;
@@ -564,6 +585,7 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
         public InputAction @Jump => m_Wrapper.m_GamePlay_Jump;
         public InputAction @Attack => m_Wrapper.m_GamePlay_Attack;
         public InputAction @EnterDoor => m_Wrapper.m_GamePlay_EnterDoor;
+        public InputAction @Esc => m_Wrapper.m_GamePlay_Esc;
         public InputActionMap Get() { return m_Wrapper.m_GamePlay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -585,6 +607,9 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                 @EnterDoor.started -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnEnterDoor;
                 @EnterDoor.performed -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnEnterDoor;
                 @EnterDoor.canceled -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnEnterDoor;
+                @Esc.started -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnEsc;
+                @Esc.performed -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnEsc;
+                @Esc.canceled -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnEsc;
             }
             m_Wrapper.m_GamePlayActionsCallbackInterface = instance;
             if (instance != null)
@@ -601,6 +626,9 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                 @EnterDoor.started += instance.OnEnterDoor;
                 @EnterDoor.performed += instance.OnEnterDoor;
                 @EnterDoor.canceled += instance.OnEnterDoor;
+                @Esc.started += instance.OnEsc;
+                @Esc.performed += instance.OnEsc;
+                @Esc.canceled += instance.OnEsc;
             }
         }
     }
@@ -638,5 +666,6 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
         void OnJump(InputAction.CallbackContext context);
         void OnAttack(InputAction.CallbackContext context);
         void OnEnterDoor(InputAction.CallbackContext context);
+        void OnEsc(InputAction.CallbackContext context);
     }
 }

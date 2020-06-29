@@ -10,7 +10,6 @@ public class DoorEnter : MonoBehaviour
     private Transform playerTransform;
 
     private PlayerInputActions controls;
-    private Vector2 move;
 
     void Awake()
     {
