@@ -57,6 +57,14 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""ArrowHit"",
+                    ""type"": ""Button"",
+                    ""id"": ""b919e675-2070-4012-b277-98ee915e659a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -488,6 +496,17 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                     ""action"": ""Esc"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fa2c57ec-1e0c-4e58-b20f-4af876e9feea"",
+                    ""path"": ""<Keyboard>/h"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""ArrowHit"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -523,6 +542,7 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
         m_GamePlay_Attack = m_GamePlay.FindAction("Attack", throwIfNotFound: true);
         m_GamePlay_EnterDoor = m_GamePlay.FindAction("EnterDoor", throwIfNotFound: true);
         m_GamePlay_Esc = m_GamePlay.FindAction("Esc", throwIfNotFound: true);
+        m_GamePlay_ArrowHit = m_GamePlay.FindAction("ArrowHit", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -577,6 +597,7 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
     private readonly InputAction m_GamePlay_Attack;
     private readonly InputAction m_GamePlay_EnterDoor;
     private readonly InputAction m_GamePlay_Esc;
+    private readonly InputAction m_GamePlay_ArrowHit;
     public struct GamePlayActions
     {
         private @PlayerInputActions m_Wrapper;
@@ -586,6 +607,7 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
         public InputAction @Attack => m_Wrapper.m_GamePlay_Attack;
         public InputAction @EnterDoor => m_Wrapper.m_GamePlay_EnterDoor;
         public InputAction @Esc => m_Wrapper.m_GamePlay_Esc;
+        public InputAction @ArrowHit => m_Wrapper.m_GamePlay_ArrowHit;
         public InputActionMap Get() { return m_Wrapper.m_GamePlay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -610,6 +632,9 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                 @Esc.started -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnEsc;
                 @Esc.performed -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnEsc;
                 @Esc.canceled -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnEsc;
+                @ArrowHit.started -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnArrowHit;
+                @ArrowHit.performed -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnArrowHit;
+                @ArrowHit.canceled -= m_Wrapper.m_GamePlayActionsCallbackInterface.OnArrowHit;
             }
             m_Wrapper.m_GamePlayActionsCallbackInterface = instance;
             if (instance != null)
@@ -629,6 +654,9 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
                 @Esc.started += instance.OnEsc;
                 @Esc.performed += instance.OnEsc;
                 @Esc.canceled += instance.OnEsc;
+                @ArrowHit.started += instance.OnArrowHit;
+                @ArrowHit.performed += instance.OnArrowHit;
+                @ArrowHit.canceled += instance.OnArrowHit;
             }
         }
     }
@@ -667,5 +695,6 @@ public class @PlayerInputActions : IInputActionCollection, IDisposable
         void OnAttack(InputAction.CallbackContext context);
         void OnEnterDoor(InputAction.CallbackContext context);
         void OnEsc(InputAction.CallbackContext context);
+        void OnArrowHit(InputAction.CallbackContext context);
     }
 }

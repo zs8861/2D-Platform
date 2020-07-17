@@ -12,7 +12,6 @@ public class PlayerAttack : MonoBehaviour
     private PolygonCollider2D collider2D;
 
     private PlayerInputActions controls;
-    private Vector2 move;
 
     void Awake()
     {

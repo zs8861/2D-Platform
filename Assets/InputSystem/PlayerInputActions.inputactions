@@ -44,6 +44,14 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "ArrowHit",
+                    "type": "Button",
+                    "id": "b919e675-2070-4012-b277-98ee915e659a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -473,6 +481,17 @@
                     "processors": "",
                     "groups": "Keyboard",
                     "action": "Esc",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "fa2c57ec-1e0c-4e58-b20f-4af876e9feea",
+                    "path": "<Keyboard>/h",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "ArrowHit",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
