@@ -53,7 +53,7 @@ public class DoorEnter : MonoBehaviour
         if (other.gameObject.CompareTag("Player") 
             && other.GetType().ToString() == "UnityEngine.CapsuleCollider2D")
         {
-            Debug.Log("触碰到门了");
+            //Debug.Log("触碰到门了");
             isDoor = true;
         }
     }
@@ -63,7 +63,7 @@ public class DoorEnter : MonoBehaviour
         if (other.gameObject.CompareTag("Player") 
             && other.GetType().ToString() == "UnityEngine.CapsuleCollider2D")
         {
-            Debug.Log("离开门范围了");
+            //Debug.Log("离开门范围了");
             isDoor = false;
         }
     }
