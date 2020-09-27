@@ -34,7 +34,7 @@ public class PlayerHealth : MonoBehaviour
         
     }
 
-    public void DamegePlayer(int damage)
+    public void DamagePlayer(int damage)
     {
         sf.FlashScreen();
         health -= damage;

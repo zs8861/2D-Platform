@@ -28,7 +28,7 @@ public class Gun : MonoBehaviour
 
         if(Mouse.current.leftButton.wasPressedThisFrame)
         {
-            Debug.Log("鼠标左键已经按下");
+            //Debug.Log("鼠标左键已经按下");
             //生成一颗子弹
             Instantiate(bullet, muzzleTransform.position, Quaternion.Euler(transform.eulerAngles));
         }

@@ -24,7 +24,7 @@ public class Spike : MonoBehaviour
         
         if(other.CompareTag("Player") && other.GetType().ToString() == "UnityEngine.PolygonCollider2D")
         {
-            playerHealth.DamegePlayer(damge);
+            playerHealth.DamagePlayer(damge);
         }
     }
 }

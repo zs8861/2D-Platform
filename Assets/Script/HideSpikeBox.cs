@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ExplosionRange : MonoBehaviour
+public class HideSpikeBox : MonoBehaviour
 {
-    public int damage;
     public float destroyTime;
+    public int damage;
 
     private PlayerHealth playerHealth;
 
@@ -19,24 +19,14 @@ public class ExplosionRange : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Enemy"))
+        if (other.gameObject.CompareTag("Player") && other.GetType().ToString() == "UnityEngine.PolygonCollider2D")
         {
-            Debug.Log("对敌人造成伤害");
-            other.GetComponent<Enemy>().TakeDamage(damage);
-        }
-
-        if (other.gameObject.CompareTag("Player") 
-            && other.GetType().ToString() == "UnityEngine.CapsuleCollider2D")
-        {
-            if (playerHealth != null)
-            {
-                playerHealth.DamagePlayer(damage);
-            }
+            playerHealth.DamagePlayer(damage);
         }
     }
 }
