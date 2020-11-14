@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Enemy
   - CameraShake
+  - Bullet
   layers:
   - Default
   - TransparentFX
@@ -26,7 +27,7 @@ TagManager:
   - TriggerBox
   - Weapon
   - Spike
-  - 
+  - DestructibleLayer
   - 
   - 
   - 
