@@ -23,7 +23,7 @@ public class EasterEgg : MonoBehaviour
     {
         if(Password == easterEggPassword)
         {
-            Debug.Log("触发彩蛋!!!!!");
+            //Debug.Log("触发彩蛋!!!!!");
             Password = "";
             StartCoroutine(GenCoins());
         }

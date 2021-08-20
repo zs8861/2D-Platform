@@ -26,7 +26,7 @@ public class ExplosionRange : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
-            Debug.Log("对敌人造成伤害");
+            //Debug.Log("对敌人造成伤害");
             other.GetComponent<Enemy>().TakeDamage(damage);
         }
 

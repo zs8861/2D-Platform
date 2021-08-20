@@ -112,7 +112,7 @@ public class PlayerController : MonoBehaviour
     void Run()
     {
         //float moveDir = Input.GetAxis("Horizontal");
-        ////Debug.Log("moveDir = " + moveDir.ToString());
+        //Debug.Log("moveDir = " + moveDir.ToString());
         //Vector2 playerVel = new Vector2(moveDir * runSpeed, myRigidbody.velocity.y);
         //myRigidbody.velocity = playerVel;
         //bool plyerHasXAxisSpeed = Mathf.Abs(myRigidbody.velocity.x) > Mathf.Epsilon;

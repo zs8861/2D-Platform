@@ -9,7 +9,7 @@ public class PlayerAttack : MonoBehaviour
     public float time;
 
     private Animator anim;
-    private PolygonCollider2D collider2D;
+    private PolygonCollider2D m_collider2D;
 
     private PlayerInputActions controls;
 
@@ -34,7 +34,7 @@ public class PlayerAttack : MonoBehaviour
     void Start()
     {
         anim = GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>();
-        collider2D = GetComponent<PolygonCollider2D>();
+        m_collider2D = GetComponent<PolygonCollider2D>();
     }
 
     // Update is called once per frame
@@ -55,14 +55,14 @@ public class PlayerAttack : MonoBehaviour
     IEnumerator StartAttack()
     {
         yield return new WaitForSeconds(startTime);
-        collider2D.enabled = true;
+        m_collider2D.enabled = true;
         StartCoroutine(disableHitBox());
     }
 
     IEnumerator disableHitBox()
     {
         yield return new WaitForSeconds(time);
-        collider2D.enabled = false;
+        m_collider2D.enabled = false;
     }
 
     void OnTriggerEnter2D(Collider2D other)

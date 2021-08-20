@@ -26,7 +26,7 @@ public class MainMenu : MonoBehaviour
 
         while (!operation.isDone)
         {
-            Debug.Log(operation.progress);
+            //Debug.Log(operation.progress);
             float progress = operation.progress / 0.9f;
             slider.value = progress;
             progressText.text = Mathf.FloorToInt(progress * 100f) + "%";

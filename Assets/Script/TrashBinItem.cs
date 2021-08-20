@@ -34,7 +34,7 @@ public class TrashBinItem : MonoBehaviour
             && other.GetType().ToString() == "UnityEngine.CapsuleCollider2D")
         {
             isPlayerInTrashBin = true;
-            Debug.Log("Player is In TrashBin");
+            //Debug.Log("Player is In TrashBin");
         }
     }
 
@@ -44,7 +44,7 @@ public class TrashBinItem : MonoBehaviour
             && other.GetType().ToString() == "UnityEngine.CapsuleCollider2D")
         {
             isPlayerInTrashBin = false;
-            Debug.Log("Player is not In TrashBin");
+            //Debug.Log("Player is not In TrashBin");
         }
 
     }

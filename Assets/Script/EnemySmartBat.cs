@@ -10,14 +10,14 @@ public class EnemySmartBat : Enemy
     private Transform playerTransform;
 
     // Start is called before the first frame update
-    public void Start()
+    public new void Start()
     {
         base.Start();
         playerTransform = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
     }
 
     // Update is called once per frame
-    public void Update()
+    public new void Update()
     {
         //调用父类的Update()方法
         base.Update();
