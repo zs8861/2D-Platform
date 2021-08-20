@@ -71,5 +71,10 @@ public class PlayerAttack : MonoBehaviour
         {
             other.GetComponent<Enemy>().TakeDamage(damage);
         }
+
+        if (other.gameObject.CompareTag("YellowStar"))
+        {
+            other.GetComponent<YellowStar>().GenGift();
+        }
     }
 }

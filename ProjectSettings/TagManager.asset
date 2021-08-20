@@ -7,6 +7,7 @@ TagManager:
   - Enemy
   - CameraShake
   - Bullet
+  - YellowStar
   layers:
   - Default
   - TransparentFX
